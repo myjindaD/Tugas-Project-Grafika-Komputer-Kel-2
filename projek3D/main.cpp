@@ -9,7 +9,15 @@ GLfloat angleX = 0.0;
 GLfloat angleY = 2.0;
 int lastMouseX;
 int lastMouseY;
+
 GLuint texture1;
+GLuint texture2;
+GLuint texture3;
+GLuint texture4;
+GLuint texture5;
+GLuint texture6;
+GLuint texture7;
+GLuint texture8;
 
 
 void display();
@@ -35,11 +43,14 @@ int main (int argc, char** argv){
 }
 
 void init() {
-
+    glEnable(GL_DEPTH_TEST);
+    glClearColor(0.0, 0.0, 0.0, 1.0);
+    glEnable(GL_LIGHTING);
+    glEnable(GL_LIGHT0);
 	glClearColor(0.2, 0.2, 0.2, 1.0);
-
+	//TEKSTUR 1
     int width, height, channels;
-    unsigned char* image = stbi_load("C:\Users\asus\Documents\Kuliah\gambar.jpg", &width, &height, &channels, STBI_rgb_alpha);
+    unsigned char* image = stbi_load("E:\BTS.jpg", &width, &height, &channels, STBI_rgb_alpha);
     if (image == NULL) {
         printf("Error loading texture 1\n");
         exit(1);
@@ -55,10 +66,131 @@ void init() {
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
-    glEnable(GL_DEPTH_TEST);
-    glClearColor(0.0, 0.0, 0.0, 1.0);
-    glEnable(GL_LIGHTING);
-    glEnable(GL_LIGHT0);
+    //TEKSTUR 2
+    int width2, height2, channels2;
+    unsigned char* image2 = stbi_load("E:\pasir.jpg", &width2, &height2, &channels2, STBI_rgb_alpha);
+    if (image2 == NULL) {
+        printf("Error loading texture 1\n");
+        exit(1);
+    }
+    glGenTextures(1, &texture2);
+    glBindTexture(GL_TEXTURE_2D, texture2);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width2, height2, 0, GL_RGBA, GL_UNSIGNED_BYTE, image2);
+    stbi_image_free(image2);
+
+    // Parameter Tekstur yang digunakan
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+    //TEKSTUR 3
+    int width3, height3, channels3;
+    unsigned char* image3 = stbi_load("E:\gambar4.jpg", &width3, &height3, &channels3, STBI_rgb_alpha);
+    if (image3 == NULL) {
+        printf("Error loading texture 1\n");
+        exit(1);
+    }
+    glGenTextures(1, &texture3);
+    glBindTexture(GL_TEXTURE_2D, texture3);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width3, height3, 0, GL_RGBA, GL_UNSIGNED_BYTE, image3);
+    stbi_image_free(image3);
+
+    // Parameter Tekstur yang digunakan
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+    //TEKSTUR 4
+    int width4, height4, channels4;
+    unsigned char* image4 = stbi_load("E:\images.jpeg", &width4, &height4, &channels4, STBI_rgb_alpha);
+    if (image4 == NULL) {
+        printf("Error loading texture 1\n");
+        exit(1);
+    }
+    glGenTextures(1, &texture4);
+    glBindTexture(GL_TEXTURE_2D, texture4);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width4, height4, 0, GL_RGBA, GL_UNSIGNED_BYTE, image4);
+    stbi_image_free(image4);
+
+    // Parameter Tekstur yang digunakan
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+    //TEKSTUR 5
+    int width5, height5, channels5;
+    unsigned char* image5 = stbi_load("E:\gambar5.jpg", &width5, &height5, &channels5, STBI_rgb_alpha);
+    if (image5 == NULL) {
+        printf("Error loading texture 1\n");
+        exit(1);
+    }
+    glGenTextures(1, &texture5);
+    glBindTexture(GL_TEXTURE_2D, texture5);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width5, height5, 0, GL_RGBA, GL_UNSIGNED_BYTE, image5);
+    stbi_image_free(image5);
+
+    // Parameter Tekstur yang digunakan
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+    //TEKSTUR 6
+    int width6, height6, channels6;
+    unsigned char* image6 = stbi_load("E:\dog.jpg", &width6, &height6, &channels6, STBI_rgb_alpha);
+    if (image6 == NULL) {
+        printf("Error loading texture 1\n");
+        exit(1);
+    }
+    glGenTextures(1, &texture6);
+    glBindTexture(GL_TEXTURE_2D, texture6);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width6, height6, 0, GL_RGBA, GL_UNSIGNED_BYTE, image6);
+    stbi_image_free(image6);
+
+    // Parameter Tekstur yang digunakan
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+    //TEKSTUR 7
+    int width7, height7, channels7;
+    unsigned char* image7 = stbi_load("E:\gambar7.jpg", &width7, &height7, &channels7, STBI_rgb_alpha);
+    if (image7 == NULL) {
+        printf("Error loading texture 1\n");
+        exit(1);
+    }
+    glGenTextures(1, &texture7);
+    glBindTexture(GL_TEXTURE_2D, texture7);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width7, height7, 0, GL_RGBA, GL_UNSIGNED_BYTE, image7);
+    stbi_image_free(image7);
+
+    // Parameter Tekstur yang digunakan
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+    //TEKSTUR 8
+    int width8, height8, channels8;
+    unsigned char* image8 = stbi_load("E:\gambar8.jpg", &width8, &height8, &channels8, STBI_rgb_alpha);
+    if (image8 == NULL) {
+        printf("Error loading texture 1\n");
+        exit(1);
+    }
+    glGenTextures(1, &texture8);
+    glBindTexture(GL_TEXTURE_2D, texture8);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width8, height8, 0, GL_RGBA, GL_UNSIGNED_BYTE, image8);
+    stbi_image_free(image8);
+
+    // Parameter Tekstur yang digunakan
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
     // Posisi Cahaya
     GLfloat light_position[] = { 10.0, 10.0, 10.0, 1.0 };
@@ -91,13 +223,16 @@ void display(){
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     //DINDING DEPAN
+    glEnable(GL_TEXTURE_2D);  // Aktifkan tekstur
+    glBindTexture(GL_TEXTURE_2D, texture8);
     glBegin(GL_QUADS);
-    glColor3ub(224, 224, 206);
-    glVertex3f(-30.0, 50.0, 3.0);
-    glVertex3f(-30.0, -30.0, 3.0);
-    glVertex3f(30.0, -30.0, 3.0);
-    glVertex3f(30.0, 50.0, 3.0);
+    glColor3ub(224, 224, 206); // Warna putih untuk menghindari efek warna
+    glTexCoord2f(1.0f, 0.0f); glVertex3f(-30.0, 50.0, 3.0);
+    glTexCoord2f(1.0f, 1.0f); glVertex3f(-30.0, -30.0, 3.0);
+    glTexCoord2f(0.0f, 1.0f); glVertex3f(30.0, -30.0, 3.0);
+    glTexCoord2f(0.0f, 0.0f); glVertex3f(30.0, 50.0, 3.0);
     glEnd();
+    glDisable(GL_TEXTURE_2D);
 
     //DINDING BELAKANG
     glBegin(GL_QUADS);
@@ -216,13 +351,16 @@ void display(){
      glEnd();
 
      //dinding kanan
+     glEnable(GL_TEXTURE_2D);  // Aktifkan tekstur
+     glBindTexture(GL_TEXTURE_2D, texture8);
      glBegin(GL_QUADS);
-     glColor3ub(224, 224, 206);
-     glVertex3f(-27.0, 50.0, 60.0);
-     glVertex3f(-27.0, -30.0, 60.0);
-     glVertex3f(-27.0, -30.0, 3.0);
-     glVertex3f(-27.0, 50.0, 3.0);
+     glColor3ub(224, 224, 206); // Warna putih untuk menghindari efek warna
+     glTexCoord2f(1.0f, 0.0f); glVertex3f(-27.0, 50.0, 60.0);
+     glTexCoord2f(1.0f, 1.0f); glVertex3f(-27.0, -30.0, 60.0);
+     glTexCoord2f(0.0f, 1.0f); glVertex3f(-27.0, -30.0, 3.0);
+     glTexCoord2f(0.0f, 0.0f); glVertex3f(-27.0, 50.0, 3.0);
      glEnd();
+     glDisable(GL_TEXTURE_2D);
 
      //pondasi
      glBegin(GL_QUADS);
@@ -296,13 +434,16 @@ void display(){
      glEnd();
 
      //atas atas
+     glEnable(GL_TEXTURE_2D);  // Aktifkan tekstur
+     glBindTexture(GL_TEXTURE_2D, texture7);
      glBegin(GL_QUADS);
-     glColor3ub(82, 49, 15);
-     glVertex3f(-30.0, -27.0, 60.0);
-     glVertex3f(30.0, -27.0, 60.0);
-     glVertex3f(30.0, -27.0, 3.0);
-     glVertex3f(-30.0, -27.0, 3.0);
+     glColor3ub(82, 49, 15); // Warna putih untuk menghindari efek warna
+     glTexCoord2f(1.0f, 0.0f); glVertex3f(-30.0, -27.0, 60.0);
+     glTexCoord2f(1.0f, 1.0f); glVertex3f(30.0, -27.0, 60.0);
+     glTexCoord2f(0.0f, 1.0f); glVertex3f(30.0, -27.0, 3.0);
+     glTexCoord2f(0.0f, 0.0f); glVertex3f(-30.0, -27.0, 3.0);
      glEnd();
+     glDisable(GL_TEXTURE_2D);
 
 
      //SOFA
@@ -382,8 +523,6 @@ void display(){
      glVertex3f(18.0, -12.0, 17.0);
      glVertex3f(18.0, -11.0, 17.0);
      glEnd();
-
-
 
      //sandaran sofa
      glBegin(GL_QUADS);
@@ -598,10 +737,10 @@ void display(){
     glBindTexture(GL_TEXTURE_2D, texture1);
     glBegin(GL_QUADS);
     glColor3ub(255, 255, 255); // Warna putih untuk menghindari efek warna
-    glTexCoord2f(0.0f, 1.0f); glVertex3f(-20.0, 30.0, 6.0);
-    glTexCoord2f(0.0f, 0.0f); glVertex3f(-20.0, 15.0, 6.0);
-    glTexCoord2f(1.0f, 0.0f); glVertex3f(-5.0, 15.0, 6.0);
-    glTexCoord2f(1.0f, 1.0f); glVertex3f(-5.0, 30.0, 6.0);
+    glTexCoord2f(1.0f, 0.0f); glVertex3f(-20.0, 30.0, 6.0);
+    glTexCoord2f(1.0f, 1.0f); glVertex3f(-20.0, 15.0, 6.0);
+    glTexCoord2f(0.0f, 1.0f); glVertex3f(-5.0, 15.0, 6.0);
+    glTexCoord2f(0.0f, 0.0f); glVertex3f(-5.0, 30.0, 6.0);
     glEnd();
     glDisable(GL_TEXTURE_2D);
 
@@ -652,13 +791,16 @@ void display(){
      glEnd();
 
      //depan
+     glEnable(GL_TEXTURE_2D);  // Aktifkan tekstur
+     glBindTexture(GL_TEXTURE_2D, texture2);
      glBegin(GL_QUADS);
-     glColor3ub(255, 255, 255);
-     glVertex3f(-2.5, 28.0, 6.0);
-     glVertex3f(-2.5, 18.0, 6.0);
-     glVertex3f(1.0, 18.0, 6.0);
-     glVertex3f(1.0, 28.0, 6.0);
+     glColor3ub(255, 255, 255); // Warna putih untuk menghindari efek warna
+     glTexCoord2f(1.0f, 0.0f); glVertex3f(-2.5, 28.0, 6.0);
+     glTexCoord2f(1.0f, 1.0f); glVertex3f(-2.5, 18.0, 6.0);
+     glTexCoord2f(0.0f, 1.0f); glVertex3f(1.0, 18.0, 6.0);
+     glTexCoord2f(0.0f, 0.0f); glVertex3f(1.0, 28.0, 6.0);
      glEnd();
+     glDisable(GL_TEXTURE_2D);
 
      //tutup atas
      glBegin(GL_QUADS);
@@ -707,13 +849,16 @@ void display(){
      glEnd();
 
      //depan
+     glEnable(GL_TEXTURE_2D);  // Aktifkan tekstur
+     glBindTexture(GL_TEXTURE_2D, texture3);
      glBegin(GL_QUADS);
-     glColor3ub(255, 255, 255);
-     glVertex3f(3.5, 30.0, 6.0);
-     glVertex3f(3.5, 25.0, 6.0);
-     glVertex3f(6.5, 25.0, 6.0);
-     glVertex3f(6.5, 30.0, 6.0);
+     glColor3ub(255, 255, 255); // Warna putih untuk menghindari efek warna
+     glTexCoord2f(1.0f, 0.0f); glVertex3f(3.5, 30.0, 6.0);
+     glTexCoord2f(1.0f, 1.0f); glVertex3f(3.5, 25.0, 6.0);
+     glTexCoord2f(0.0f, 1.0f); glVertex3f(6.5, 25.0, 6.0);
+     glTexCoord2f(0.0f, 0.0f); glVertex3f(6.5, 30.0, 6.0);
      glEnd();
+     glDisable(GL_TEXTURE_2D);
 
      //tutup atas
      glBegin(GL_QUADS);
@@ -762,13 +907,16 @@ void display(){
      glEnd();
 
      //depan
+     glEnable(GL_TEXTURE_2D);  // Aktifkan tekstur
+     glBindTexture(GL_TEXTURE_2D, texture4);
      glBegin(GL_QUADS);
-     glColor3ub(255, 255, 255);
-     glVertex3f(3.5, 22.0, 6.0);
-     glVertex3f(3.5, 15.0, 6.0);
-     glVertex3f(6.5, 15.0, 6.0);
-     glVertex3f(6.5, 22.0, 6.0);
+     glColor3ub(255, 255, 255); // Warna putih untuk menghindari efek warna
+     glTexCoord2f(1.0f, 0.0f); glVertex3f(3.5, 22.0, 6.0);
+     glTexCoord2f(1.0f, 1.0f); glVertex3f(3.5, 15.0, 6.0);
+     glTexCoord2f(0.0f, 1.0f); glVertex3f(6.5, 15.0, 6.0);
+     glTexCoord2f(0.0f, 0.0f); glVertex3f(6.5, 22.0, 6.0);
      glEnd();
+     glDisable(GL_TEXTURE_2D);
 
      //tutup atas
      glBegin(GL_QUADS);
@@ -817,13 +965,16 @@ void display(){
      glEnd();
 
      //depan
+     glEnable(GL_TEXTURE_2D);  // Aktifkan tekstur
+     glBindTexture(GL_TEXTURE_2D, texture5);
      glBegin(GL_QUADS);
-     glColor3ub(255, 255, 255);
-     glVertex3f(9.0, 30.0, 6.0);
-     glVertex3f(9.0, 15.0, 6.0);
-     glVertex3f(20.0, 15.0, 6.0);
-     glVertex3f(20.0, 30.0, 6.0);
+     glColor3ub(255, 255, 255); // Warna putih untuk menghindari efek warna
+     glTexCoord2f(1.0f, 0.0f); glVertex3f(9.0, 30.0, 6.0);
+     glTexCoord2f(1.0f, 1.0f); glVertex3f(9.0, 15.0, 6.0);
+     glTexCoord2f(0.0f, 1.0f); glVertex3f(20.0, 15.0, 6.0);
+     glTexCoord2f(0.0f, 0.0f); glVertex3f(20.0, 30.0, 6.0);
      glEnd();
+     glDisable(GL_TEXTURE_2D);
 
      //tutup atas
      glBegin(GL_QUADS);
@@ -1668,13 +1819,17 @@ void display(){
      glEnd();
 
      //FOTO
-     glBegin(GL_QUADS);//depan
-     glColor3ub(255, 255, 255);
-     glVertex3f(-26.0, -4.0, 48.0);
-     glVertex3f(-24.0, -10.0, 48.0);
-     glVertex3f(-24.0, -10.0, 52.0);
-     glVertex3f(-26.0, -4.0, 52.0);
+     //depan
+     glEnable(GL_TEXTURE_2D);  // Aktifkan tekstur
+     glBindTexture(GL_TEXTURE_2D, texture6);
+     glBegin(GL_QUADS);
+     glColor3ub(255, 255, 255); // Warna putih untuk menghindari efek warna
+     glTexCoord2f(1.0f, 0.0f); glVertex3f(-26.0, -4.0, 48.0);
+     glTexCoord2f(1.0f, 1.0f); glVertex3f(-24.0, -10.0, 48.0);
+     glTexCoord2f(0.0f, 1.0f); glVertex3f(-24.0, -10.0, 52.0);
+     glTexCoord2f(0.0f, 0.0f); glVertex3f(-26.0, -4.0, 52.0);
      glEnd();
+     glDisable(GL_TEXTURE_2D);
 
      glBegin(GL_QUADS);//belakang
      glColor3ub(000, 000, 000);
@@ -1712,6 +1867,18 @@ void reshape(int w, int h){
     glLoadIdentity();
     gluLookAt(0.0, 0.0, 100.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
 
+}
+
+void shadow(){
+    glDisable(GL_LIGHTING);
+    glBegin(GL_QUADS);
+    glColor4f(0,1,0,0);
+    glVertex3f(-1.80, -0.15, 1.70);
+    glVertex3f(1.75, -0.15, 1.75);
+    glVertex3f(1.75, -0.15, 1.8);
+    glVertex3f(-2.2, -0.15, -2.2);
+    glEnd();
+    glEnable(GL_LIGHTING);
 }
 
 void keyboard(unsigned char key, int x, int y)
